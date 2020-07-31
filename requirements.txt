@@ -2,4 +2,3 @@ discord.py
 pillow
 requests
 datetime
-io
