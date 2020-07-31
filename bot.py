@@ -57,6 +57,11 @@ async def on_message_edit(msg_b, msg_a):
 
 
 @bot.event
+async def on_command_error(ctx, error):
+	pass
+
+
+@bot.event
 async def on_message_delete(message):
 	if message.author.bot:
 		return
