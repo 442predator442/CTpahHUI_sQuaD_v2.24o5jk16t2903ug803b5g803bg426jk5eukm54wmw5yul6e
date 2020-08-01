@@ -95,9 +95,9 @@ async def on_message_delete(message):
 async def on_member_join(member):
 	guild = member.guild
 	channel = guild.get_channel(738483468333219870)
-	img = Image.open("C:/python/cb/fon.png")	
+	img = Image.open("fon.png")	
 
-	responc = Image.open('C:/python/cb/image.png')
+	responc = Image.open('image.png')
 	responc = responc.convert('RGB')
 	responc = responc.resize((420,420), Image.ANTIALIAS)
 
@@ -107,11 +107,11 @@ async def on_member_join(member):
 	responce = responce.convert('RGBA')
 	responce = responce.resize((380,380), Image.ANTIALIAS)
 	draw = ImageDraw.Draw(img)
-	font = ImageFont.truetype("C:/python/cb/19471.ttf", 80)
-	font1 = ImageFont.truetype("C:/python/cb/12.ttf", 80)
+	font = ImageFont.truetype("19471.ttf", 80)
+	font1 = ImageFont.truetype("12.ttf", 80)
 	font2 = ImageFont.truetype("arial.ttf", 60)
-	font3 = ImageFont.truetype("C:/python/cb/123.ttf", 50)
-	font4 = ImageFont.truetype("C:/python/cb/1234.ttf", 40)
+	font3 = ImageFont.truetype("123.ttf", 50)
+	font4 = ImageFont.truetype("1234.ttf", 40)
 	img.paste(responc, (60, 60, 480, 480))
 	img.paste(responce, (80, 80, 460, 460))
 	draw.text((560, 70), 'Приветствуем!', font = font)
