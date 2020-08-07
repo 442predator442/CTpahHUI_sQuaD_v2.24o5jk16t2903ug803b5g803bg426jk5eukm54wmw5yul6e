@@ -13,6 +13,10 @@ import io
 bot = commands.Bot(command_prefix = ".")
 bot.remove_command('help')
 
+for file in os.listdir('./cogs'):
+	if file.endswith('.py'):
+		bot.load_extension(f'cogs.{file[:-3]}')
+
 # python C:/python/cb/bot.py
 
 @bot.event
