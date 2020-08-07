@@ -11,7 +11,6 @@ from PIL import ImageDraw
 import io
 
 bot = commands.Bot(command_prefix = ".")
-bot.remove_command('help')
 
 for file in os.listdir('./cogs'):
 	if file.endswith('.py'):
@@ -153,10 +152,6 @@ async def avatar(ctx, member: discord.Member = None):
 	emb.set_image(url = user.avatar_url)
 	await ctx.send(embed = emb)
 
-
-@bot.command()
-async def help(ctx, module = None):
-	await ctx.send('В розроботке...')
 
 
 bot.run('NzM4NjI5MDc4MjEwMzE0MjUw.XyOr7w.7F2tyvUY7k_9bFBmnDWbj6BaPa4')
