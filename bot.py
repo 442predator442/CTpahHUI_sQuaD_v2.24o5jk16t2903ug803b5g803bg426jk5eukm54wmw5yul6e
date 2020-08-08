@@ -23,6 +23,7 @@ for file in os.listdir('./cogs'):
 async def on_ready():
 	print('Странный Бот включился...')
 
+
 @bot.event
 async def on_message_edit(msg_b, msg_a):
 	if msg_b.author.bot:
@@ -92,6 +93,8 @@ async def on_message_delete(message):
 
 @bot.event
 async def on_member_join(member):
+	role = member.guild.get_role(741603206244859904)
+	await member.add_roles(role)
 	guild = member.guild
 	channel = guild.get_channel(738483468333219870)
 	img = Image.open("fon.png")
@@ -155,6 +158,30 @@ async def on_member_remove(member):
 	await channel.send(file  = discord.File("leave1.png"))
 
 
+@bot.event
+async def on_raw_reaction_add(payload):
+	if payload.message_id ==741611448807063641:
+		if str(payload.emoji) =='<:check:738641498127597599>':
+			guild = bot.get_guild(payload.guild_id)
+			rrole = guild.get_role(741603206244859904)
+			arole = guild.get_role(738480720372039781)
+			member = bot.get_guild(payload.guild_id).get_member(payload.user_id)
+			await member.remove_roles(rrole)
+			await member.add_roles(arole)
+
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+	if payload.message_id ==741611448807063641:
+		if str(payload.emoji) =='<:check:738641498127597599>':
+			guild = bot.get_guild(payload.guild_id)
+			rrole = guild.get_role(741603206244859904)
+			arole = guild.get_role(738480720372039781)
+			member = bot.get_guild(payload.guild_id).get_member(payload.user_id)
+			await member.remove_roles(arole)
+			await member.add_roles(rrole)
+
+
 @bot.command(aliases = ['cls', 'cl'])
 @commands.has_role(738480581452496960)
 @commands.has_permissions(manage_messages = True)
@@ -180,6 +207,16 @@ async def avatar(ctx, member: discord.Member = None):
 		)
 	emb.set_image(url = user.avatar_url)
 	await ctx.send(embed = emb)
-	
+
+
+@bot.command()
+async def verific(ctx):
+	await ctx.message.delete()
+	embed = discord.Embed(title = 'Нажми на реакцию <:check:738641498127597599>, чтобы пройти верификацию.', colour = discord.Colour.green())
+	embed.set_image(url = 'https://media.discordapp.net/attachments/734420336954834994/741608940990758922/MOSHED-2020-8-8-13-48-46.gif')
+	msg = await ctx.send(embed = embed)
+	await msg.add_reaction('<:check:738641498127597599>')
+	await ctx.author.send(msg.id)
+
 
 bot.run('NzM4NjI5MDc4MjEwMzE0MjUw.XyOr7w.7F2tyvUY7k_9bFBmnDWbj6BaPa4')
