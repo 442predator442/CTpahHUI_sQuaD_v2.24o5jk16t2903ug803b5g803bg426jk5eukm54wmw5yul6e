@@ -12,7 +12,6 @@ import io
 import os
 
 bot = commands.Bot(command_prefix = ".")
-bot.remove_command('help')
 
 for file in os.listdir('./cogs'):
 	if file.endswith('.py'):
