@@ -61,11 +61,6 @@ async def on_message_edit(msg_b, msg_a):
 
 
 @bot.event
-async def on_command_error(ctx, error):
-	pass
-
-
-@bot.event
 async def on_message_delete(message):
 	if message.author.bot:
 		return
@@ -99,7 +94,7 @@ async def on_message_delete(message):
 async def on_member_join(member):
 	guild = member.guild
 	channel = guild.get_channel(738483468333219870)
-	img = Image.open("fon.png")	
+	img = Image.open("fon.png")
 
 	responc = Image.open('image.png')
 	responc = responc.convert('RGB')
@@ -110,6 +105,7 @@ async def on_member_join(member):
 	responce = Image.open(io.BytesIO(responce.content))
 	responce = responce.convert('RGBA')
 	responce = responce.resize((380,380), Image.ANTIALIAS)
+
 	draw = ImageDraw.Draw(img)
 	font = ImageFont.truetype("19471.ttf", 80)
 	font1 = ImageFont.truetype("12.ttf", 80)
@@ -126,6 +122,37 @@ async def on_member_join(member):
 	img.save('fon1.png')
 	await channel.send(file  = discord.File("fon1.png"))
 
+
+@bot.event
+async def on_member_remove(member):
+	guild = member.guild
+	channel = guild.get_channel(738483525715492895)
+	img = Image.open("leave.png")
+
+	responc = Image.open('image.png')
+	responc = responc.convert('RGB')
+	responc = responc.resize((420,420), Image.ANTIALIAS)
+
+	url = str(member.avatar_url)
+	responce = requests.get(url, stream = True)
+	responce = Image.open(io.BytesIO(responce.content))
+	responce = responce.convert('RGBA')
+	responce = responce.resize((380,380), Image.ANTIALIAS)
+
+	draw = ImageDraw.Draw(img)
+	font = ImageFont.truetype("19471.ttf", 60)
+	font1 = ImageFont.truetype("12.ttf", 80)
+	font2 = ImageFont.truetype("arial.ttf", 60)
+	font3 = ImageFont.truetype("123.ttf", 50)
+	font4 = ImageFont.truetype("1234.ttf", 40)
+	img.paste(responc, (60, 60, 480, 480))
+	img.paste(responce, (80, 80, 460, 460))
+	draw.text((500, 70), f'{member.name}#{member.discriminator}', font = font1)
+	draw.text((565, 160), 'Ушел с сервера!', font = font1)
+	draw.text((90, 505), f'[#] Нас теперь {len(member.guild.members)}', font = font)
+	draw.text((800, 570), f'{member.guild.name}', font = font4)
+	img.save('leave1.png')
+	await channel.send(file  = discord.File("leave1.png"))
 
 
 @bot.command(aliases = ['cls', 'cl'])
@@ -154,25 +181,5 @@ async def avatar(ctx, member: discord.Member = None):
 	emb.set_image(url = user.avatar_url)
 	await ctx.send(embed = emb)
 	
-	
-@bot.command()
-async def rules(ctx):
-	web = ctx.channel.create_webhook(name = 'Правила Странный SQUAD' )
-	embed = discord.Embed(title = '[1] ПРАВИЛА ТЕКСТОВЫХ КАНАЛОВ', description = '[1.1] Запрещено оскорблять участников севера.\n[1.2] Запрещен капс (80% сообщения, содержащие большые буквы). \n[1.3] Запрещен спам и флуд (флуд: сообщение, содержащее 10+ подряд одинаковых букв/символов).\n[1.4] Запрещена Торговая Площадка (розрешено только в пределах игры за игровую валюту).\n[1.5] Запрещено отправлять NSFW картинки (картинки несущие 18+, шок контент и т.д.)\n[1.6] Запрещен офф-топ (Если для определенных сообщений/команд существует отдельный канал, это считается за офф-топ. Игнорируемые каналы: команды).\n[1.7] Запрещена реклама в ЛЮБОЙ его форме.\n[1.8] Запрещено попрошайничество.\n[1.9] Запрещено устраивать срач в любом чате.\n[1.10] Запрещено спорить/осуждать действия администрации.', colour = 000000)
-	embed.set_footer(text = 'Правила Странный SQUAD', icon_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	emb = discord.Embed(title = '[2] ПРАВИЛА ГОЛОСОВОГО ЧАТА', description = '[2.1] Запрещено создавать сторонние шумы, которые мешают общению.\n[2.2] Запрещено оскорблять/обсуждать участников сервера.', colour = 000000)
-	emb.set_footer(text = 'Правила Странный SQUAD', icon_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	em = discord.Embed(title = '[3] ПРОЧЕЕ', description = '[3.1] Приесоденяясь на сервер, вы автоматически соглашаетесь с правилами сервера.\n[3.2] Незнание правил не освобождает вас от ответственности.\n[3.3] Слив любого участника карается баном.\n[3.4] Ведите себя адекватно.', colour = 000000)
-	em.set_footer(text = 'Правила Странный SQUAD', icon_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-
-	e = discord.Embed(title = '[#] При нарушении правил вам будет выдан мут/кик/бан (зависит от нарушения).', colour = 000000)
-	e.set_image(url = 'https://cdn.discordapp.com/attachments/734420336954834994/741539053115015228/MOSHED-2020-7-1-23-49-1-1.gif')
-	e.set_footer(text = 'Правила Странный SQUAD | 08.08.2020', icon_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	await web.send(embed = embed, avatar_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	await web.send(embed = emb, avatar_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	await web.send(embed = em, avatar_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	await web.send(embed = e, avatar_url = 'https://cdn.discordapp.com/attachments/734420336954834994/741530902110142504/MOSHED-2020-7-2-0-18-50.jpg')
-	await web.delete()
-
 
 bot.run('NzM4NjI5MDc4MjEwMzE0MjUw.XyOr7w.7F2tyvUY7k_9bFBmnDWbj6BaPa4')
