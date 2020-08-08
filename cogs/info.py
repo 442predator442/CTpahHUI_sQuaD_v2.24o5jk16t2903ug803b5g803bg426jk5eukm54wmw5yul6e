@@ -44,8 +44,8 @@ class info(commands.Cog):
 			)
 		emb.add_field(name = 'Айди сервера', value = f'{ctx.message.guild.id}')
 		emb.add_field(name = 'Владелец', value = ctx.message.guild.owner.mention)
-		emb.add_field(name = f'Участников[{members}]', value = f'<:online:730816375332798496>{online} онлайн\n<:idle:730817053325262948>{idle} не активен\n<:dnd:730817459245940848>{dnd} не беспокоить\n<:offline:730816392630239332>{offline} оффлайн', inline = False)
-		emb.add_field(name = f'Каналы[{channels}]', value = f'<:textchannel:730815659734204457> {text_channels} текстовых<:space:730818398199480342><:voicechannel:730816361697116281>{voice_channels} голосовых', inline = False)
+		emb.add_field(name = f'Участников[{members}]', value = f'<:online:741552059978874940> {online} онлайн\n<:idle:741551972750196746> {idle} не активен\n<:dnd:741551944522268732> {dnd} не беспокоить\n<:offline:741552022825992233> {offline} оффлайн', inline = False)
+		emb.add_field(name = f'Каналы[{channels}]', value = f'<:textchannel:741552105210380379> {text_channels} текстовых<:space:741552137284222986><:voicechannel:741552193621983293>{voice_channels} голосовых', inline = False)
 		emb.add_field(name = 'Ролей', value = roles)
 		emb.add_field(name = 'Эмодзи', value = emojis)
 		emb.add_field(name = 'Уровень верификации', value = verification, inline = False)
@@ -72,15 +72,15 @@ class info(commands.Cog):
 			mob ='ПК'
 		status = user.status
 		if status == discord.Status.online:
-			status ='<:online:730816375332798496>В сети'
+			status ='<:online:741552059978874940>В сети'
 		elif status == discord.Status.idle:
-			status ='<:idle:730817053325262948>Не активен'
+			status ='<:idle:741551972750196746>Не активен'
 		elif status == discord.Status.offline:
-			status ='<:offline:730816392630239332>Оффлайн'
+			status ='<:offline:741552022825992233>Оффлайн'
 		elif status == discord.Status.invisible:
-			status ='<:offline:730816392630239332>Невидимка'
+			status ='<:offline:741552022825992233>Невидимка'
 		elif status == discord.Status.dnd:
-			status ='<:dnd:730817459245940848>Не беспокоить'
+			status ='<:dnd:741551944522268732>Не беспокоить'
 		emb = discord.Embed(
 			title = f'{user.name}#{user.discriminator}',
 			colour = user.colour
