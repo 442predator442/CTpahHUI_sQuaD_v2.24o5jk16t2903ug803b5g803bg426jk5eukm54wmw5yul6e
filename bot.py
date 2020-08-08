@@ -96,6 +96,38 @@ async def on_message_delete(message):
 	return
 
 
+@bot.event
+async def on_member_join(member):
+	guild = member.guild
+	channel = guild.get_channel(738483468333219870)
+	img = Image.open("fon.png")	
+
+	responc = Image.open('image.png')
+	responc = responc.convert('RGB')
+	responc = responc.resize((420,420), Image.ANTIALIAS)
+
+	url = str(member.avatar_url)
+	responce = requests.get(url, stream = True)
+	responce = Image.open(io.BytesIO(responce.content))
+	responce = responce.convert('RGBA')
+	responce = responce.resize((380,380), Image.ANTIALIAS)
+	draw = ImageDraw.Draw(img)
+	font = ImageFont.truetype("19471.ttf", 80)
+	font1 = ImageFont.truetype("12.ttf", 80)
+	font2 = ImageFont.truetype("arial.ttf", 60)
+	font3 = ImageFont.truetype("123.ttf", 50)
+	font4 = ImageFont.truetype("1234.ttf", 40)
+	img.paste(responc, (60, 60, 480, 480))
+	img.paste(responce, (80, 80, 460, 460))
+	draw.text((560, 70), 'Приветствуем!', font = font)
+	draw.text((500, 200), 'У нас новенький(-ая),', font = font1)
+	draw.text((500, 300), f'{member.name}#{member.discriminator}', font = font2)
+	draw.text((100, 510), f'#{len(member.guild.members)}-ый участник', font = font3)
+	draw.text((800, 570), f'{member.guild.name}', font = font4)
+	img.save('fon1.png')
+	await channel.send(file  = discord.File("fon1.png"))
+
+
 
 @bot.command(aliases = ['cls', 'cl'])
 @commands.has_role(738480581452496960)
