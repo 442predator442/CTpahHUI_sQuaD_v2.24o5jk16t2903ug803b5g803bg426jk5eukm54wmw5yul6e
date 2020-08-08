@@ -38,7 +38,7 @@ class partner(commands.Cog):
 					e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
 					await ctx.send(embed = e)
 					await partner.add_roles(prole)
-					await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel}**')
+					await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel.mention}**')
 				else:
 					message = ctx.message.content.split()
 					for elem in message:
@@ -51,7 +51,7 @@ class partner(commands.Cog):
 							e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
 							await ctx.send(embed = e)
 							await partner.add_roles(prole)
-							await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel}**')
+							await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel.mention}**')
 			elif amount ==100:
 				message = ctx.message.content.split()
 				for elem in message:
@@ -64,7 +64,7 @@ class partner(commands.Cog):
 						e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
 						await ctx.send(embed = e)
 						await partner.add_roles(prole)
-						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel}**')
+						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel.mention}**')
 
 			elif amount > 100 < 700:
 				
@@ -79,7 +79,7 @@ class partner(commands.Cog):
 						e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
 						await ctx.send(embed = e)
 						await partner.add_roles(prole)
-						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {nchannel}**')
+						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {nchannel.mention}**')
 			elif amount > 700:
 				
 				message = ctx.message.content.split()
@@ -93,7 +93,7 @@ class partner(commands.Cog):
 						e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
 						await ctx.send(embed = e)
 						await partner.add_roles(prole)
-						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {bchannel}**')
+						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {bchannel.mention}**')
 		else:
 			embed = discord.Embed(title = '<:xmark:738641026209546251> Недостаточно прав использовать данную команду!', colour = discord.Colour.green())
 			await ctx.send(embed = embed)
