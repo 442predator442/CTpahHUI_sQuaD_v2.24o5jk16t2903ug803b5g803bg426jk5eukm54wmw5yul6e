@@ -66,33 +66,33 @@ class partner(commands.Cog):
 						await partner.add_roles(prole)
 						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel.mention}**')
 
-			elif amount > 100 < 700:
-				
-				message = ctx.message.content.split()
-				for elem in message:
-					if elem.startswith("https://") or elem.startswith("http://"):
-						embed = discord.Embed(title = 'Приесоденится на сервер (нажми)', url = f'{elem}', description = f'**Партнер:** {partner.mention}\n\n**Текст:**\n{text}')
-						embed.set_footer(text = f'ПАРТНЕРКА | {time}')
-						embed.set_author(name = f'{partner.name}#{partner.discriminator}', icon_url = partner.avatar_url)
-						msg = await nchannel.send(embed = embed)
-						await msg.edit(content = f'@everyone @here', embed = embed)
-						e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
-						await ctx.send(embed = e)
-						await partner.add_roles(prole)
-						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {nchannel.mention}**')
-			elif amount > 700:
-				message = ctx.message.content.split()
-				for elem in message:
-					if elem.startswith("https://") or elem.startswith("http://"):
-						embed = discord.Embed(title = 'Приесоденится на сервер (нажми)', url = f'{elem}', description = f'**Партнер:** {partner.mention}\n\n**Текст:**\n{text}')
-						embed.set_footer(text = f'ПАРТНЕРКА | {time}')
-						embed.set_author(name = f'{partner.name}#{partner.discriminator}', icon_url = partner.avatar_url)
-						msg = await bchannel.send(embed = embed)
-						await msg.edit(content = f'@everyone @here', embed = embed)
-						e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
-						await ctx.send(embed = e)
-						await partner.add_roles(prole)
-						await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {bchannel.mention}**')
+			elif amount > 100:
+				if amount < 700:
+					message = ctx.message.content.split()
+					for elem in message:
+						if elem.startswith("https://") or elem.startswith("http://"):
+							embed = discord.Embed(title = 'Приесоденится на сервер (нажми)', url = f'{elem}', description = f'**Партнер:** {partner.mention}\n\n**Текст:**\n{text}')
+							embed.set_footer(text = f'ПАРТНЕРКА | {time}')
+							embed.set_author(name = f'{partner.name}#{partner.discriminator}', icon_url = partner.avatar_url)
+							msg = await nchannel.send(embed = embed)
+							await msg.edit(content = f'@everyone @here', embed = embed)
+							e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
+							await ctx.send(embed = e)
+							await partner.add_roles(prole)
+							await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {nchannel.mention}**')
+				elif amount > 700:
+					message = ctx.message.content.split()
+					for elem in message:
+						if elem.startswith("https://") or elem.startswith("http://"):
+							embed = discord.Embed(title = 'Приесоденится на сервер (нажми)', url = f'{elem}', description = f'**Партнер:** {partner.mention}\n\n**Текст:**\n{text}')
+							embed.set_footer(text = f'ПАРТНЕРКА | {time}')
+							embed.set_author(name = f'{partner.name}#{partner.discriminator}', icon_url = partner.avatar_url)
+							msg = await bchannel.send(embed = embed)
+							await msg.edit(content = f'@everyone @here', embed = embed)
+							e = discord.Embed(title = '<:check:738641498127597599> Партнерка успешно совершена.', colour = discord.Colour.green())
+							await ctx.send(embed = e)
+							await partner.add_roles(prole)
+							await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {bchannel.mention}**')
 		else:
 			embed = discord.Embed(title = '<:xmark:738641026209546251> Недостаточно прав использовать данную команду!', colour = discord.Colour.green())
 			await ctx.send(embed = embed)
