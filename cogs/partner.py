@@ -52,7 +52,7 @@ class partner(commands.Cog):
 							await ctx.send(embed = e)
 							await partner.add_roles(prole)
 							await partner.send(f'**Ваша партнерка отправлена на сервере `Странный SQUAD`**\n**Вашу партнерку вы можете найти сдесь: {schannel.mention}**')
-			elif amount =100:
+			elif amount ==100:
 				message = ctx.message.content.split()
 				for elem in message:
 					if elem.startswith("https://") or elem.startswith("http://"):
